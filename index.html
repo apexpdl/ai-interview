@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Kathmandu Visa Interview Simulator</title>
+    <link rel="stylesheet" href="./styles.css?v=20260403c" />
+  </head>
+  <body>
+    <div id="introScreen" class="intro-screen">
+      <div class="intro-panel">
+        <div class="intro-copy">
+          <span class="eyebrow">Kathmandu Consular Window Simulation</span>
+          <h1>Add your details if you want.</h1>
+          <p>
+            Leave everything blank if you want to go in cold and let the officer discover
+            everything during the interview.
+          </p>
+        </div>
+
+        <form id="setupForm" class="setup-form" autocomplete="off">
+          <label>
+            Name
+            <input name="fullName" placeholder="Optional" />
+          </label>
+          <label>
+            University / destination
+            <input name="school" placeholder="Optional" />
+          </label>
+          <label>
+            COA / funding snapshot
+            <input name="coa" placeholder="Optional. Example: 28k after 12k scholarship" />
+          </label>
+          <label>
+            Relatives in the U.S.
+            <input name="relativesInUs" placeholder="Optional" />
+          </label>
+          <label class="setup-form__wide">
+            Anything else
+            <textarea
+              name="extraContext"
+              rows="3"
+              placeholder="Optional. Add any work history, gap, university fit, sponsor details, or leave blank."
+            ></textarea>
+          </label>
+        </form>
+
+        <section class="officer-section">
+          <div class="officer-section__header">
+            <span>Officer appearance</span>
+            <small>Pick one or leave it on random.</small>
+          </div>
+          <div id="officerGrid" class="officer-grid"></div>
+        </section>
+
+        <div class="intro-actions">
+          <button id="startButton" type="button" class="primary-button">
+            Start Interview
+          </button>
+          <p id="startStatus">
+            Camera and microphone will be requested once. If they fail, typed responses still work.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="interviewScreen" class="interview-screen hidden">
+      <video id="cameraPreview" class="camera-preview" autoplay muted playsinline></video>
+
+      <header class="interview-hud">
+        <div class="interview-hud__brand">
+          <span class="eyebrow">Nonimmigrant Visa Unit</span>
+          <strong>U.S. Embassy Kathmandu</strong>
+        </div>
+        <div class="interview-hud__meta">
+          <span id="topbarPhase">Queue</span>
+          <span>Token <strong id="tokenDisplay">---</strong></span>
+          <span id="clockDisplay">00:00</span>
+        </div>
+      </header>
+
+      <main class="interview-stage">
+        <div class="fluorescent fluorescent--left"></div>
+        <div class="fluorescent fluorescent--right"></div>
+
+        <div class="status-chip" id="sceneStatus">Waiting</div>
+
+        <section class="window-scene">
+          <div class="flag-backdrop" aria-hidden="true">
+            <div class="flag-backdrop__stars"></div>
+          </div>
+          <div class="monitor-glow"></div>
+          <div class="typing-led"></div>
+          <div id="officerPortrait" class="officer-portrait officer-portrait--idle"></div>
+          <div class="glass-reflection"></div>
+        </section>
+
+        <section class="counter-zone">
+          <div class="counter-zone__surface"></div>
+          <div class="document-tray">
+            <div class="passport-card" id="passportCard">Passport</div>
+          </div>
+          <div class="microphone-grill">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="fingerprint-scanner" id="fingerprintScanner">
+            <div class="fingerprint-scanner__glow"></div>
+            <div class="fingerprint-scanner__label">Fingerprint Scanner</div>
+          </div>
+        </section>
+
+        <section class="dialogue-box" id="dialogueBox">
+          <span id="speakerLabel">Officer</span>
+          <p id="currentPrompt">Waiting to begin.</p>
+        </section>
+
+        <section class="response-dock">
+          <textarea
+            id="responseInput"
+            rows="2"
+            placeholder="Type here if speech does not capture clearly. Press Enter to send."
+          ></textarea>
+          <button id="submitButton" type="button" class="send-button">Send</button>
+          <div class="response-meta">
+            <span id="captureStatus">Waiting to begin.</span>
+            <span id="dictationPreview"></span>
+          </div>
+        </section>
+
+        <div id="preludeOverlay" class="prelude-overlay hidden">
+          <div class="prelude-card">
+            <span class="eyebrow">Queue</span>
+            <div id="preludeToken" class="prelude-card__token">---</div>
+            <p id="preludeMessage">Stand by.</p>
+          </div>
+        </div>
+
+        <div id="reportOverlay" class="report-overlay hidden">
+          <div class="report-panel">
+            <div class="report-panel__top">
+              <div>
+                <span class="eyebrow">Interview Review</span>
+                <h2>Session Closed</h2>
+              </div>
+              <button id="restartButton" type="button" class="ghost-button">New Interview</button>
+            </div>
+            <div id="reportContent" class="report-content"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="./src/main.js?v=20260403c"></script>
+  </body>
+</html>

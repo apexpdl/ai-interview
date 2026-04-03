@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-04-03T13:01:15.050Z",
+  "importStats": {
+    "scannedFiles": 0,
+    "importedCandidates": 0,
+    "failures": [],
+    "usedSeedRecords": 8,
+    "normalizedRecords": 8
+  },
+  "totalRecords": 8,
+  "adjudicatedRecords": 7,
+  "activeTarget": {
+    "country": "Nepal",
+    "city": "Kathmandu"
+  },
+  "activeScope": "Kathmandu, Nepal public-report model",
+  "byCountry": {
+    "Nepal": 8
+  },
+  "byCity": {
+    "Kathmandu, Nepal": 8
+  },
+  "byPlatform": {
+    "happy-schools": 4,
+    "reddit": 4
+  },
+  "byVisaType": {
+    "F1": 6,
+    "B1B2": 1,
+    "H1B": 1
+  },
+  "byOutcome": {
+    "approved": 4,
+    "rejected": 2,
+    "unknown": 1,
+    "221g": 1
+  },
+  "topActiveTriggers": [
+    {
+      "id": "siblings-in-us",
+      "weight": 0.2
+    },
+    {
+      "id": "immigrant-intent",
+      "weight": 0.2
+    },
+    {
+      "id": "weak-research-fit",
+      "weight": 0.2
+    },
+    {
+      "id": "masters-rationale",
+      "weight": 0.2
+    },
+    {
+      "id": "credibility-risk",
+      "weight": 0.2
+    }
+  ]
+}

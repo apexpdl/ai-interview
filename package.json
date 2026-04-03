@@ -1,0 +1,13 @@
+{
+  "name": "ai-interviewer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Immersive Kathmandu U.S. visa interview simulator",
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "model": "node ./src/data/print-model.mjs",
+    "import:bulk": "node ./src/data/import-bulk.mjs",
+    "check": "node ./src/simulator/verify.mjs"
+  }
+}
